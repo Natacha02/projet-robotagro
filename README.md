@@ -73,6 +73,7 @@ Voici la configuration de la chaîne de traitement des données :
 - [Lien vers le projet Wokwi](https://wokwi.com/projects/XXXXXX) – Simulation du montage ESP32 et capteur de température (remplace par ton lien)
 - `code/esp32_temperature.ino` – code Arduino pour ESP32 et capteur de température
 - Lien vers ThingSpeak : [Ton Channel ThingSpeak](https://thingspeak.com/channels/XXXXXX)
+![image](https://github.com/user-attachments/assets/83f118fa-2bfb-40aa-b33a-e6d1dd7952ba)
 
 
 
