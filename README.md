@@ -1,99 +1,78 @@
-# projet-robotagro
-
-1. Contexte et objectif du projet
-Dans le cadre de notre projet, nous avons dû mettre en place un système capable de :
-
-Acquérir des données depuis un capteur connecté à une carte (Micro:bit ou Arduino),
-
-Transmettre les données à un serveur pour les stocker et les exploiter,
-
-Visualiser la position des fraises sur une carte numérique.
-
-Ce projet s’inscrit dans une démarche d’agriculture connectée, où l’objectif est de surveiller en temps réel l’état de cultures (humidité, température...) pour mieux intervenir.
 
 
 
-2. Matériel et technologies utilisés
-Élément	Utilité
-Micro:bit	Acquisition de données (T4)
-Capteur d’humidité	Mesure du sol (ex: connecté à P0)
-Port USB (liaison série)	Transfert des données vers PC
-Python	Script pour lire et traiter les données
-Flask	Serveur web pour afficher les infos
-Folium	Affichage des fraises sur une carte
-GitHub	Stockage du projet et livrable final
-Images / captures	Pour illustrer le fonctionnement
+#  Revue 2 – Validation des solutions techniques
 
+##  Objectif de cette tâche
 
+Dans cette deuxième revue, ma mission était de :
 
-3. Fonctionnement du système
-✅ Lecture des données :
-Le Micro:bit lit la valeur d’un capteur d’humidité.
+- Créer un code pour le positionnement du robot
+- Réaliser un montage simulé sur **Wokwi** avec l'ESP32 et un capteur de température
+- Afficher les données de température sur ThingSpeak
+- Vérifier que la chaîne de données fonctionne correctement
 
-Les données sont envoyées via liaison série à un ordinateur.
+---
 
-✅ Traitement :
-Un script Python lit ces données avec serial et les convertit en un format exploitable.
+##  Installation et configuration
 
-Les données sont organisées par localisation (chaque fraise → coordonnées GPS simulées).
+J'ai utilisé les éléments suivants pour cette simulation sur **Wokwi** :
 
-✅ Visualisation :
-Une carte Folium est générée avec des points interactifs représentant les fraises.
+- **Carte ESP32** : Utilisée pour la gestion du capteur de température et la connexion sans fil
+- **Capteur de température** : Pour mesurer la température ambiante
+- **Plateforme ThingSpeak** : Pour l'affichage et la collecte des données
 
-Chaque point affiche les données reçues (ex: humidité).
+J'ai configuré le montage sur **Wokwi**, où l'ESP32 collecte les données du capteur de température et les envoie à ThingSpeak via Wi-Fi.
 
+---
 
-4. Programme utilisé sur le Micro:bi
-from microbit import *
-while True:
-    valeur = pin0.read_analog()
-    print(valeur)
-    sleep(1000)
+##  Mise en œuvre de la chaîne d’acquisition
 
-5. Serveur Flask                             
-from flask import Flask, render_template, jsonify
+Voici la configuration de la chaîne de traitement des données :
 
-app = Flask(__name__)
+1. **Acquisition** : Le capteur de température mesure la température ambiante.
+2. **Transmission** : L'ESP32 envoie les données à ThingSpeak via Wi-Fi.
+3. **Restitution** : Les données sont affichées en temps réel sur ThingSpeak, pour une visualisation à distance.
 
-# Exemple de données reçues
-data = {
-    "fraise_1": {"humidité": 612, "coord": [48.85, 2.35]},
-    "fraise_2": {"humidité": 580, "coord": [48.851, 2.351]}
-}
+---
 
-@app.route('/')
-def home():
-    return render_template("index.html", data=data)
+##  Grandeur mesurée
 
-@app.route('/api/data')
-def get_data():
-    return jsonify(data)
+- **Température** (en °C)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+---
 
+##  Respect des contraintes
 
- 6. Carte interactive Folium
+| Contrainte | Statut | Détails |
+|------------|--------|---------|
+| Fiabilité des données | ✅ | Les données sont stables et envoyées à ThingSpeak sans erreur |
+| Transmission sans fil | ✅ | L'ESP32 se connecte correctement à Wi-Fi et transmet les données |
+| Affichage des données | ✅ | Les données de température s'affichent correctement sur ThingSpeak |
 
-import folium
+---
 
-m = folium.Map(location=[48.85, 2.35], zoom_start=15)
-folium.Marker([48.85, 2.35], popup="Fraise 1 - Humidité 612").add_to(m)
-m.save("templates/index.html")
+## ⚙ Prototypage rapide
 
-8. Conclusion
-Le projet a permis de créer une chaîne complète d’acquisition, de traitement et de visualisation de données.
-L’objectif est atteint : les fraises sont visibles sur une carte, avec les données environnementales à jour.
+- Le montage a été simulé sur **Wokwi**, avec l'ESP32 et le capteur de température connectés
+- J'ai testé la communication avec ThingSpeak et cela fonctionne bien
 
-🔧 Améliorations possibles :
-Ajouter du Bluetooth / Wi-Fi pour éviter le filaire
+---
 
-Sauvegarder les données dans une base de données (MySQL, Firebase…)
+##  Bilan personnel
 
-Ajouter des capteurs supplémentaires (température, luminosité…)
+> Le montage est simulé sur Wokwi et fonctionne comme prévu.  
+> L'ESP32 récupère bien la température et l'envoie à ThingSpeak en temps réel.  
+> Le système de collecte et d'affichage des données est validé.  
+> Il me reste à finaliser le code pour le positionnement du robot dans la prochaine étape.
 
-	
+---
 
+##  Fichiers fournis
+
+- [Lien vers le projet Wokwi](https://wokwi.com/projects/XXXXXX) – Simulation du montage ESP32 et capteur de température (remplace par ton lien)
+- `code/esp32_temperature.ino` – code Arduino pour ESP32 et capteur de température
+- Lien vers ThingSpeak : [Ton Channel ThingSpeak](https://thingspeak.com/channels/XXXXXX)
 
 
 
