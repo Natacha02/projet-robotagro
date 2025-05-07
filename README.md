@@ -46,13 +46,13 @@ Voici la configuration de la chaîne de traitement des données :
 
 | Contrainte | Statut | Détails |
 |------------|--------|---------|
-| Fiabilité des données | ✅ | Les données sont stables et envoyées à ThingSpeak sans erreur |
-| Transmission sans fil | ✅ | L'ESP32 se connecte correctement à Wi-Fi et transmet les données |
-| Affichage des données | ✅ | Les données de température s'affichent correctement sur ThingSpeak |
+| Fiabilité des données | oui | Les données sont stables et envoyées à ThingSpeak sans erreur |
+| Transmission sans fil |  oui| L'ESP32 se connecte correctement à Wi-Fi et transmet les données |
+| Affichage des données |oui | Les données de température s'affichent correctement sur ThingSpeak |
 
 ---
 
-## ⚙ Prototypage rapide
+##  Prototypage rapide
 
 - Le montage a été simulé sur **Wokwi**, avec l'ESP32 et le capteur de température connectés
 - J'ai testé la communication avec ThingSpeak et cela fonctionne bien
