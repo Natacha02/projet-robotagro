@@ -23,10 +23,10 @@ J'ai utilisé les éléments suivants pour cette simulation sur **Wokwi** :
 - **Capteur de température** : Pour mesurer la température ambiante
 - **Plateforme ThingSpeak** : Pour l'affichage et la collecte des données
 
-J'ai configuré le montage sur **Wokwi**, où l'ESP32 collecte les données du capteur de température et les envoie à ThingSpeak via Wi-Fi.
-Après que les capteurs envoient les données sur ThingSpeak, on peut les récupérer dans Visual Studio via l’API web de ThingSpeak pour les afficher dans une application (ex. en C# ou Python).
+J'ai configuré le montage sur Wokwi, où l'ESP32 collecte les données du capteur de température et les envoie à ThingSpeak via Wi-Fi.
+Après que les capteurs envoient les données sur ThingSpeak, on peut les récupérer dans Visual Studio via l’API web de ThingSpeak pour les afficher dans une application (ex. en Python).
 Les capteurs envoient la position GPS à l’ESP32, qui les transmet à ThingSpeak via Internet, et ensuite Visual Studio lit ces données depuis ThingSpeak pour les afficher à l’écran.
----
+
 
 ##  Mise en œuvre de la chaîne d’acquisition
 
