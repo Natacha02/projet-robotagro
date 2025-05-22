@@ -4,6 +4,7 @@
 #  Revue 2 – Validation des solutions techniques
 
 ##  Objectif de cette tâche
+Récupérer les informations de T4. Mettre en place un serveur pour stocker et visualiser les informations recueillis. Visualiser la position des fraises sur une carte numérique.
 
 Dans cette deuxième revue, ma mission était de :
 
@@ -23,7 +24,8 @@ J'ai utilisé les éléments suivants pour cette simulation sur **Wokwi** :
 - **Plateforme ThingSpeak** : Pour l'affichage et la collecte des données
 
 J'ai configuré le montage sur **Wokwi**, où l'ESP32 collecte les données du capteur de température et les envoie à ThingSpeak via Wi-Fi.
-
+Après que les capteurs envoient les données sur ThingSpeak, on peut les récupérer dans Visual Studio via l’API web de ThingSpeak pour les afficher dans une application (ex. en C# ou Python).
+Les capteurs envoient la position GPS à l’ESP32, qui les transmet à ThingSpeak via Internet, et ensuite Visual Studio lit ces données depuis ThingSpeak pour les afficher à l’écran.
 ---
 
 ##  Mise en œuvre de la chaîne d’acquisition
@@ -70,7 +72,7 @@ Voici la configuration de la chaîne de traitement des données :
 
 ##  Fichiers fournis
 
-- [Lien vers le projet Wokwi](https://wokwi.com/projects/XXXXXX) – Simulation du montage ESP32 et capteur de température (remplace par ton lien)
+- [Lien vers le projet Wokwi](https://wokwi.com/projects/XXXXXX) – Simulation du montage ESP32 et capteur de température
 - `code/esp32_temperature.ino` – code Arduino pour ESP32 et capteur de température
 - Lien vers ThingSpeak : [Ton Channel ThingSpeak](https://thingspeak.com/channels/XXXXXX)
 ![image](https://github.com/user-attachments/assets/83f118fa-2bfb-40aa-b33a-e6d1dd7952ba)
